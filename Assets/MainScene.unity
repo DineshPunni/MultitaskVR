@@ -172,6 +172,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 55204674}
+  - component: {fileID: 55204675}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -192,6 +193,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &55204675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 55204673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6749858928cbca641b437a7ed0aea0bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &56855175
 Prefab:
   m_ObjectHideFlags: 0
@@ -1265,6 +1277,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.115682, y: 0.86157036, z: 2.2939794}
   m_Center: {x: -0.2606497, y: 0.43078503, z: -2.3382358e-14}
+--- !u!114 &759489370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 759489367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f6cd68053f629b489bb3e5790b90271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
 --- !u!1001 &784824619
 Prefab:
   m_ObjectHideFlags: 0
@@ -2924,7 +2948,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4122998237592144, guid: fa577da00fa6c43409027bfc2cb446f1, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.017
       objectReference: {fileID: 0}
     - target: {fileID: 4122998237592144, guid: fa577da00fa6c43409027bfc2cb446f1, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2965,6 +2989,10 @@ Prefab:
     - target: {fileID: 1791102037889338, guid: fa577da00fa6c43409027bfc2cb446f1, type: 2}
       propertyPath: m_Name
       value: GateSmallFrameB (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122998237592144, guid: fa577da00fa6c43409027bfc2cb446f1, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.0128092
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa577da00fa6c43409027bfc2cb446f1, type: 2}
@@ -3303,6 +3331,21 @@ Prefab:
     - target: {fileID: 400108, guid: 8c00db5be83e04b4c88b073e10fba9b9, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 41.672
+      objectReference: {fileID: 0}
+    - target: {fileID: 114254908539236564, guid: 8c00db5be83e04b4c88b073e10fba9b9,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114254908539236564, guid: 8c00db5be83e04b4c88b073e10fba9b9,
+        type: 2}
+      propertyPath: attackSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114254908539236564, guid: 8c00db5be83e04b4c88b073e10fba9b9,
+        type: 2}
+      propertyPath: attackDamage
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11100000, guid: 8c00db5be83e04b4c88b073e10fba9b9, type: 2}

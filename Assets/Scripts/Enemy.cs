@@ -8,7 +8,8 @@ public class Enemy : MonoBehaviour {
 
     public int health;
     public int attackDamage;
-    public float speed;
+    public float moveSpeed;
+    public float attackSpeed;
 
     bool arrived;
 
@@ -22,10 +23,16 @@ public class Enemy : MonoBehaviour {
 
     void Update()
     {
-        if(!arrived)
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed*Time.deltaTime);
+        if (!arrived)
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
+       
     }
 
+
+    void Attack()
+    {
+        target.GetComponent<TargetHealth>().TakeDamage(attackDamage);
+    }
 
     void OnCollisionEnter(Collision coll)
     {
@@ -37,6 +44,7 @@ public class Enemy : MonoBehaviour {
         if (coll.gameObject.tag == "Target")
         {
             arrived = true;
+            InvokeRepeating("Attack", 0, attackSpeed);
         }
     }
 
