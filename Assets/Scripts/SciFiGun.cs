@@ -14,11 +14,12 @@ public class SciFiGun : MonoBehaviour {
 
     public float bulletSpeed;
 
+    private AudioSource aSource;
 
 	void Start () {
 
         hand = GetComponentInParent<Hand>();
-		
+        aSource = GetComponent<AudioSource>();
 	}
 	
 	void Update () {
@@ -33,6 +34,7 @@ public class SciFiGun : MonoBehaviour {
     {
         var tmp = Instantiate(bulletPrefab, shootPosition.position, transform.parent.rotation);
         tmp.GetComponent<Rigidbody>().velocity =  transform.forward * bulletSpeed;
+        aSource.Play();
     }
 
 }

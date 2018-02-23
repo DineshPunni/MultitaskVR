@@ -6,12 +6,30 @@ using System;
 public class TargetHealth : MonoBehaviour {
 
     public static Action OnTargetDestroyed;
-
-
+   
     public int health;
 
-	void Start () {
-		
+    int fullHealth;
+
+
+    private void OnEnable()
+    {
+        GameManager.OnStartGame += ResetHealth;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnStartGame -= ResetHealth;
+    }
+
+    void ResetHealth()
+    {
+        health = fullHealth;
+    }
+
+    void Start () {
+
+        fullHealth = health;
 	}
 	
 	void Update () {
@@ -23,7 +41,7 @@ public class TargetHealth : MonoBehaviour {
     {
         health--;
 
-        if(health <= 0)
+        if(health == 0)
         {
             if (OnTargetDestroyed != null)
                 OnTargetDestroyed();

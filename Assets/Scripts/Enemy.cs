@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour {
 
     bool arrived;
 
-    public GameObject target;
+    private GameObject target;
 
 
     private Animator aTor;
@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour {
     void Start()
     {
         aTor = GetComponent<Animator>();
+        target = GameObject.FindGameObjectWithTag("Target");
         transform.LookAt(target.transform);
     }
 
@@ -73,6 +74,7 @@ public class Enemy : MonoBehaviour {
 
     void Dead()
     {
+        arrived = true;
         aTor.SetTrigger("dead");
         Destroy(gameObject, 1f);
     }
