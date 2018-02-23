@@ -15,8 +15,12 @@ public class Enemy : MonoBehaviour {
 
     public GameObject target;
 
+
+    private Animator aTor;
+
     void Start()
     {
+        aTor = GetComponent<Animator>();
         transform.LookAt(target.transform);
     }
 
@@ -32,6 +36,7 @@ public class Enemy : MonoBehaviour {
     void Attack()
     {
         target.GetComponent<TargetHealth>().TakeDamage(attackDamage);
+        aTor.SetBool("arrived", true);
     }
 
     void OnCollisionEnter(Collision coll)
@@ -54,7 +59,7 @@ public class Enemy : MonoBehaviour {
         health--;
 
         if (health <= 0)
-            Teleport();
+            Dead();
     }
 
     private void Teleport()
@@ -64,5 +69,11 @@ public class Enemy : MonoBehaviour {
         float newXPos = UnityEngine.Random.Range(-3, 3);
         float newZPos = UnityEngine.Random.Range(3, 7);
         transform.position = new Vector3(newXPos, 0, newZPos);
+    }
+
+    void Dead()
+    {
+        aTor.SetTrigger("dead");
+        Destroy(gameObject, 1f);
     }
 }
