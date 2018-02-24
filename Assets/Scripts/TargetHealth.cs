@@ -7,9 +7,11 @@ public class TargetHealth : MonoBehaviour {
 
     public static Action OnTargetDestroyed;
    
-    public int health;
+    public float currentHealth;
 
-    int fullHealth;
+    public float maxHealth;
+
+    bool isAlive = true;
 
 
     private void OnEnable()
@@ -24,27 +26,35 @@ public class TargetHealth : MonoBehaviour {
 
     void ResetHealth()
     {
-        health = fullHealth;
+        isAlive = true;
+        currentHealth = maxHealth;
     }
 
-    void Start () {
+    void Start ()
+    {
 
-        fullHealth = health;
+        maxHealth = currentHealth;
 	}
 	
-	void Update () {
-		
+	void Update ()
+    {
+
+        if (currentHealth <= maxHealth && isAlive)
+            currentHealth += Time.deltaTime * 0.1f;
 	}
 
 
     public void TakeDamage(int number)
     {
-        health--;
+        currentHealth--;
 
-        if(health == 0)
+        if(currentHealth <= 0)
         {
-            if (OnTargetDestroyed != null)
+            if (OnTargetDestroyed != null && isAlive)
+            {
+                isAlive = false;
                 OnTargetDestroyed();
+            }
         }
     }
 }

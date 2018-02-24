@@ -20,6 +20,11 @@ public class EnemyManager : MonoBehaviour {
         GameManager.OnGameOver -= StopWave;
     }
 
+    private void Start()
+    {
+        StartWave();
+    }
+
     void StartWave()
     {
         ClearWave();
