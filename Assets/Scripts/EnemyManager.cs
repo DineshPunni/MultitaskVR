@@ -22,7 +22,7 @@ public class EnemyManager : MonoBehaviour {
 
     private void Start()
     {
-        StartWave();
+        //StartWave();
     }
 
     void StartWave()

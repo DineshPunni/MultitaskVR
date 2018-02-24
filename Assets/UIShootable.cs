@@ -21,12 +21,12 @@ public class UIShootable : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("bb");
 
         if(collision.gameObject.tag == "Bullet")
         {
-            Debug.Log("aaaa");
             OnButtonShot.Invoke();
         }
     }
 }
+
+
