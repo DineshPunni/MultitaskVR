@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour {
 
     void Attack()
     {
-        target.GetComponent<TargetHealth>().TakeDamage(attackDamage);
+        target.GetComponent<TargetController>().TakeDamage(attackDamage);
         aTor.SetBool("arrived", true);
     }
 

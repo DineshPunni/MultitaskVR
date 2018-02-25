@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour {
+public class PlayerHealthBar : MonoBehaviour
+{
 
     float maxHealth;
     float currentHealth;
 
     Slider healthBar;
 
-	void Start () {
+    void Start()
+    {
 
         maxHealth = GetComponentInParent<TargetController>().maxHealth;
         healthBar = GetComponent<Slider>();
-	}
-	
-	void Update () {
+    }
 
+    void Update()
+    {
+        // TODO reafactor this
         currentHealth = GetComponentInParent<TargetController>().currentHealth;
         healthBar.value = currentHealth / maxHealth;
     }

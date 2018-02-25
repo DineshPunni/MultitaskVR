@@ -14,12 +14,12 @@ public class GameManager : MonoBehaviour {
 
     private void OnEnable()
     {
-        TargetHealth.OnTargetDestroyed += GameOver;
+        TargetController.OnTargetDestroyed += GameOver;
     }
 
     private void OnDisable()
     {
-        TargetHealth.OnTargetDestroyed -= GameOver;
+        TargetController.OnTargetDestroyed -= GameOver;
     }
 
     void GameOver()

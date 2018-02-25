@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour {
+public class EnergyHealthBar : MonoBehaviour {
+
 
     float maxHealth;
     float currentHealth;
 
     Slider healthBar;
 
-	void Start () {
-
-        maxHealth = GetComponentInParent<TargetController>().maxHealth;
+    void Start ()
+    {
+        maxHealth = GetComponentInParent<EnergyBoxController>().maxHealth;
         healthBar = GetComponent<Slider>();
 	}
 	
-	void Update () {
+	void Update ()
+    {
 
-        currentHealth = GetComponentInParent<TargetController>().currentHealth;
+        currentHealth = GetComponentInParent<EnergyBoxController>().currentHealth;
         healthBar.value = currentHealth / maxHealth;
-    }
 
+    }
 }
