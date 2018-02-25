@@ -1756,7 +1756,6 @@ MonoBehaviour:
   attackDamage: 1
   moveSpeed: 0.5
   attackSpeed: 1
-  target: {fileID: 0}
 --- !u!137 &137633530446085664
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

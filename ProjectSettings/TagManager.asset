@@ -8,6 +8,8 @@ TagManager:
   - projectile
   - Bullet
   - Target
+  - Battery
+  - BatteryFull
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - 
   - 
   - Walls
-  - 
+  - Battery
   - 
   - 
   - 
