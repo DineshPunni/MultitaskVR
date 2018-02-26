@@ -6,6 +6,8 @@ using UnityEngine;
 public class EnergyBoxController : MonoBehaviour  {
 
 
+    public static Action OnBatteryDestroyed;
+
 
     public float maxHealth;
     public float currentHealth;
@@ -40,6 +42,10 @@ public class EnergyBoxController : MonoBehaviour  {
 
         if(gameStarted)
             currentHealth -= Time.deltaTime * healthDecrease;
+
+        if (currentHealth <= 0)
+            if (OnBatteryDestroyed != null)
+                OnBatteryDestroyed();
 	}
 
 

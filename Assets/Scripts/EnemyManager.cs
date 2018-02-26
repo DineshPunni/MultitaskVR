@@ -41,7 +41,7 @@ public class EnemyManager : MonoBehaviour {
         while(true)
         {
             SpawnEnemy(enemyPrefab);
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(3);
         }
     }
 

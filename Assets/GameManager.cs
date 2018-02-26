@@ -15,11 +15,15 @@ public class GameManager : MonoBehaviour {
     private void OnEnable()
     {
         TargetController.OnTargetDestroyed += GameOver;
+        EnergyBoxController.OnBatteryDestroyed += GameOver;
+
     }
 
     private void OnDisable()
     {
         TargetController.OnTargetDestroyed -= GameOver;
+        EnergyBoxController.OnBatteryDestroyed -= GameOver;
+
     }
 
     void GameOver()
