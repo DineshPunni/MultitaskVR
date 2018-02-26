@@ -9,7 +9,6 @@ public class BatteryManager : MonoBehaviour {
 
     public float spawnFrequency;
 
-
     private void OnEnable()
     {
         GameManager.OnStartGame += StartSpawning;
