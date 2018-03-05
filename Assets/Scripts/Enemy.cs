@@ -5,18 +5,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
-
-    public int health;
-    public int attackDamage;
+    [Header("Balancing")]
+    public float health;
+    public float attackDamage;
     public float moveSpeed;
     public float attackSpeed;
 
     bool arrived;
 
     private GameObject target;
-
-
     private Animator aTor;
+
 
     void Start()
     {
@@ -29,16 +28,19 @@ public class Enemy : MonoBehaviour {
     void Update()
     {
         if (!arrived)
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
-       
+            transform.position = Vector3.MoveTowards(
+                transform.position, 
+                target.transform.position, 
+                moveSpeed * Time.deltaTime);  
     }
 
 
     void Attack()
     {
-        target.GetComponent<TargetController>().TakeDamage(attackDamage);
+        target.GetComponentInParent<TargetController>().TakeDamage(attackDamage);
         aTor.SetBool("arrived", true);
     }
+
 
     void OnCollisionEnter(Collision coll)
     {
@@ -63,6 +65,7 @@ public class Enemy : MonoBehaviour {
             Dead();
     }
 
+
     private void Teleport()
     {
         arrived = false;
@@ -71,6 +74,7 @@ public class Enemy : MonoBehaviour {
         float newZPos = UnityEngine.Random.Range(3, 7);
         transform.position = new Vector3(newXPos, 0, newZPos);
     }
+
 
     void Dead()
     {

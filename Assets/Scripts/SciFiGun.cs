@@ -16,19 +16,21 @@ public class SciFiGun : MonoBehaviour {
 
     private AudioSource aSource;
 
-	void Start () {
-
+	void Start ()
+    {
         hand = GetComponentInParent<Hand>();
         aSource = GetComponent<AudioSource>();
 	}
 	
-	void Update () {
 
+	void Update ()
+    {
         if (hand.controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
         {
             Shoot();
         }
 	}
+
 
     void Shoot()
     {
@@ -36,5 +38,4 @@ public class SciFiGun : MonoBehaviour {
         tmp.GetComponent<Rigidbody>().velocity =  transform.forward * bulletSpeed;
         aSource.Play();
     }
-
 }

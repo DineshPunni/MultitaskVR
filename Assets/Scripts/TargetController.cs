@@ -6,47 +6,44 @@ using System;
 public class TargetController : MonoBehaviour {
 
     public static Action OnTargetDestroyed;
-   
+
+    [Header("Balancing")]
+    [HideInInspector]
     public float currentHealth;
-
     public float maxHealth;
-
+    public float healthReg;
     bool isAlive = true;
 
-
+   
     private void OnEnable()
     {
-        GameManager.OnStartGame += ResetHealth;
+        GameManager.OnStartGame += StartGame;
     }
+
 
     private void OnDisable()
     {
-        GameManager.OnStartGame -= ResetHealth;
+        GameManager.OnStartGame -= StartGame;
     }
 
-    void ResetHealth()
+
+    void Update()
+    {
+        if (currentHealth <= maxHealth && isAlive)
+            currentHealth += Time.deltaTime * healthReg;
+    }
+
+
+    void StartGame()
     {
         isAlive = true;
         currentHealth = maxHealth;
     }
 
-    void Start ()
+
+    public void TakeDamage(float damageAmount)
     {
-
-        maxHealth = currentHealth;
-	}
-	
-	void Update ()
-    {
-
-        if (currentHealth <= maxHealth && isAlive)
-            currentHealth += Time.deltaTime * 0.1f;
-	}
-
-
-    public void TakeDamage(int number)
-    {
-        currentHealth--;
+        currentHealth-= damageAmount;
 
         if(currentHealth <= 0)
         {

@@ -1753,7 +1753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  attackDamage: 1
+  attackDamage: 5
   moveSpeed: 0.5
   attackSpeed: 1
 --- !u!137 &137633530446085664

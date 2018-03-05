@@ -5,8 +5,10 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour {
 
     public GameObject enemyPrefab;
+    public float enemySpawnRate;
 
     List<GameObject> enemyList = new List<GameObject>();
+
 
     private void OnEnable()
     {
@@ -14,35 +16,36 @@ public class EnemyManager : MonoBehaviour {
         GameManager.OnGameOver += StopWave;
     }
 
+
     private void OnDisable()
     {
         GameManager.OnStartGame -= StartWave;
         GameManager.OnGameOver -= StopWave;
     }
 
-    private void Start()
-    {
-    }
-
+ 
     void StartWave()
     {
         ClearWave();
         StartCoroutine(WaveRoutine());
     }
 
+
     void StopWave()
     {
        StopAllCoroutines();
     }
 
+
     public IEnumerator WaveRoutine()
-    {
+    { 
         while(true)
         {
             SpawnEnemy(enemyPrefab);
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(enemySpawnRate);
         }
     }
+
 
     void ClearWave()
     {
@@ -52,9 +55,9 @@ public class EnemyManager : MonoBehaviour {
         }
     }
 
+
     void SpawnEnemy(GameObject enemy)
     {
-
         float newXPos = UnityEngine.Random.Range(-3, 3);
         float newZPos = UnityEngine.Random.Range(3, 7);
         transform.position = new Vector3(newXPos, 0, newZPos);
